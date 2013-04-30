@@ -14,24 +14,21 @@ DESCRIPTION=""
 HOMEPAGE="http://www.rabbitmq.com/java-client.html"
 SRC_URI="http://www.rabbitmq.com/releases/rabbitmq-java-client/v${PV}/rabbitmq-java-client-${PV}.tar.gz"
 
-LICENSE="MPL-1.1 GPL-2"
+LICENSE="Apache-2.0 MPL-1.1 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-COMMON_DEP=""
+COMMON_DEP=">=dev-java/junit-3.8
+    >=dev-java/commons-cli-1.1
+	>=dev-java/commons-io-2"
 
 RDEPEND=">=virtual/jre-1.5
-    >=dev-java/commons-cli-1.1
-	>=dev-java/commons-io-2
-    dev-java/junit
 	${COMMON_DEP}"
 DEPEND=">=virtual/jdk-1.5
     app-arch/tar
     <dev-lang/python-3
-    >=dev-java/junit-3.8
-	>=dev-java/commons-io-2
 	${COMMON_DEP}"
 
 EANT_BUILD_TARGET="dist"
