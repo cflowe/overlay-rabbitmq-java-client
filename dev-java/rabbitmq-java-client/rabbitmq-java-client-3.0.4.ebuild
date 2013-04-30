@@ -23,10 +23,15 @@ IUSE=""
 COMMON_DEP=""
 
 RDEPEND=">=virtual/jre-1.5
+    >=dev-java/commons-cli-1.1
+	>=dev-java/commons-io-2
+    dev-java/junit
 	${COMMON_DEP}"
 DEPEND=">=virtual/jdk-1.5
     app-arch/tar
-    <=dev-lang/python-3
+    <dev-lang/python-3
+    >=dev-java/junit-3.8
+	>=dev-java/commons-io-2
 	${COMMON_DEP}"
 
 EANT_BUILD_TARGET="dist"
@@ -40,7 +45,10 @@ src_unpack() {
 
 src_install() {
 	java-pkg_jarinto /usr/lib64
-	java-pkg_dojar build/dist/*.jar
+	java-pkg_dojar \
+	  build/dist/rabbitmq-client.jar \
+	  build/dist/rabbitmq-client-tests.jar
+
 	use doc && java-pkg_dojavadoc build/doc
 	use source && java-pkg_dosrc src
 
